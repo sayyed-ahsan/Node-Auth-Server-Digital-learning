@@ -81,21 +81,7 @@ const run = async () => {
         })
 
 
-        app.get('/api/quote', async (req, res) => {
-            const token = req.headers['dl-access-token']
         
-            try {
-                const decoded = jwt.verify(token, process.env.JWT_SECRET)
-                const email = decoded.email
-                const user = await userCollection.findOne({ email: email })
-        
-                return res.json({ status: 'ok', quote: user.quote })
-            } catch (error) {
-                console.log(error)
-                res.json({ status: 'error', error: 'invalid token' })
-            }
-        })
-
 
         
 
